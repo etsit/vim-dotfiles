@@ -3,15 +3,26 @@ INSTALLATION
 ============
 
 Clone Git repo:
-git clone git://github.com/etsit/vim-dotfiles.git ~/.vim
+> git clone git://github.com/etsit/vim-dotfiles.git ~/.vim
 
 Create symlinks:
-ln -s ~/.vim/vimrc ~/.vimrc
+> ln -s ~/.vim/vimrc ~/.vimrc
 and if ~/.vim/gvimrc exists,
-ln -s ~/.vim/gvimrc ~/.gvimrc
+> ln -s ~/.vim/gvimrc ~/.gvimrc
 
 Update any existing plugins:
-cd ~/.vim
-git submodule init
-git submodule update
+> cd ~/.vim
+> git submodule init
+> git submodule update
+
+Plugin notes
+------------
+
+Syntastic: https://github.com/scrooloose/syntastic 
+has prerequisities to support different languages, e.g.
+JSHint provides JavaScript syntax checking and can be
+installed with
+> npm install -g jshint
+or perhaps
+> sudo npm install -g jshint
 

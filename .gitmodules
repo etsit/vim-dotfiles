@@ -10,3 +10,6 @@
 [submodule "bundle/javascript-libraries-syntax.vim"]
 	path = bundle/javascript-libraries-syntax.vim
 	url = https://github.com/othree/javascript-libraries-syntax.vim
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
