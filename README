@@ -23,20 +23,9 @@ Update doc after installation with command
 (from Pathogen)
 > :Helptags
 
-
-PLUGIN SPECIFIC NOTES
-=====================
-
-Syntastic: https://github.com/scrooloose/syntastic 
-has prerequisities to support different languages, e.g.
-JSHint provides JavaScript syntax checking and can be
-installed with
-> npm install -g jshint
-or perhaps
-> sudo npm install -g jshint
-
-YouCompleteMe: http://valloric.github.io/YouCompleteMe/
-has a more complicated installation procedure, see homepage
-above, among others, remember to run 
-> git submodule update --recursive
+The following plugins need special installation procedures
+or 3rd party software installations: 
+- Syntastic: https://github.com/scrooloose/syntastic 
+- YouCompleteMe: http://valloric.github.io/YouCompleteMe/
+- Tern for Vim: https://github.com/marijnh/tern_for_vim
 
