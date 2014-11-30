@@ -1,3 +1,13 @@
+" -----
+"  Pathogen
+
+" Must be called before file type detection (I think)
+" i.e. filetype plugin indent on
+execute pathogen#infect()
+
+" -----
+"  Sample vimrc
+"
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
