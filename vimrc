@@ -20,10 +20,10 @@ nmap n nzz
 nmap N Nzz
 
 " General tab settings
-:set tabstop=4 shiftwidth=4 expandtab
+set tabstop=4 shiftwidth=4 expandtab
 
 " makes the spaces feel like real tabs
-:set softtabstop=4
+set softtabstop=4
 
 " Avoid tab as spaces for 'make'
 autocmd FileType make setlocal noexpandtab

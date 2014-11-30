@@ -15,8 +15,17 @@ Update any existing plugins:
 > git submodule init
 > git submodule update
 
-Plugin notes
-------------
+
+INSTALLATION OF PLUGINS
+=======================
+
+Update doc after installation with command
+(from Pathogen)
+> :Helptags
+
+
+PLUGIN SPECIFIC NOTES
+=====================
 
 Syntastic: https://github.com/scrooloose/syntastic 
 has prerequisities to support different languages, e.g.
@@ -25,4 +34,9 @@ installed with
 > npm install -g jshint
 or perhaps
 > sudo npm install -g jshint
+
+YouCompleteMe: http://valloric.github.io/YouCompleteMe/
+has a more complicated installation procedure, see homepage
+above, among others, remember to run 
+> git submodule update --recursive
 
