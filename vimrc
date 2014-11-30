@@ -5,6 +5,41 @@
 " i.e. filetype plugin indent on
 execute pathogen#infect()
 
+
+" ----- 
+"  Misc
+
+" Insertion of new line in normal mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
+" Center cursor on screen while searching
+nmap n nzz
+nmap N Nzz
+
+" General tab settings
+:set tabstop=4 shiftwidth=4 expandtab
+
+" makes the spaces feel like real tabs
+:set softtabstop=4
+
+" Avoid tab as spaces for 'make'
+autocmd FileType make setlocal noexpandtab
+
+" Soft break on word boundaries, and not showing hidden characters like tab
+set wrap linebreak nolist
+
+
+" -----
+"  Solarized
+
+" 'If you do use the custom terminal colors, simply add the following line before the colorschem solarized line'
+let g:solarized_termcolors=16
+set background=light
+" set background=dark
+colorscheme solarized
+
+
 " -----
 "  Sample vimrc
 "
