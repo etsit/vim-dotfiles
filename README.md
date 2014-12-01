@@ -4,24 +4,34 @@ vim-dotfiles
 ### Installing
 
 Clone Git repo:
-> git clone git://github.com/etsit/vim-dotfiles.git ~/.vim
+```
+git clone git://github.com/etsit/vim-dotfiles.git ~/.vim
+```
 
 Create symlinks:
-> ln -s ~/.vim/vimrc ~/.vimrc
+```
+ln -s ~/.vim/vimrc ~/.vimrc
+```
 and if ~/.vim/gvimrc exists,
-> ln -s ~/.vim/gvimrc ~/.gvimrc
+```
+ln -s ~/.vim/gvimrc ~/.gvimrc
+```
 
 Update any existing plugins:
-> cd ~/.vim
-> git submodule init
-> git submodule update
+```
+cd ~/.vim
+git submodule init
+git submodule update
+```
 
 
 #### Installation of Plugins
 
 Update doc after installation with command
 (from Pathogen)
-> :Helptags
+```
+:Helptags
+```
 
 The following plugins need special installation procedures
 or 3rd party software installations: 
