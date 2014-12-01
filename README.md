@@ -21,8 +21,7 @@ ln -s ~/.vim/gvimrc ~/.gvimrc
 Update any existing plugins:
 ```
 cd ~/.vim
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ```
 
 
