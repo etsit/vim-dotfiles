@@ -12,6 +12,7 @@ Create symlinks:
 ```
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
+
 and if ~/.vim/gvimrc exists,
 ```
 ln -s ~/.vim/gvimrc ~/.gvimrc
@@ -27,8 +28,7 @@ git submodule update
 
 #### Installation of Plugins
 
-Update doc after installation with command
-(from Pathogen)
+Update doc after installation above (with command from Pathogen)
 ```
 :Helptags
 ```
