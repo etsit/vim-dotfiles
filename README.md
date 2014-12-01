@@ -21,21 +21,20 @@ ln -s ~/.vim/gvimrc ~/.gvimrc
 Update any existing plugins:
 ```
 cd ~/.vim
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ```
 
 
 #### Installation of Plugins
 
-Update doc after installation above (with command from Pathogen)
-```
-:Helptags
-```
-
 The following plugins need special installation procedures
-or 3rd party software installations: 
+or have 3rd-party prerequisities:
 - Syntastic: https://github.com/scrooloose/syntastic 
 - YouCompleteMe: http://valloric.github.io/YouCompleteMe/
 - Tern for Vim: https://github.com/marijnh/tern_for_vim
+
+Update documentation after installation (with command from Pathogen)
+```
+:Helptags
+```
 
