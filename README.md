@@ -1,7 +1,8 @@
 vim-dotfiles
 ============
 
-### Installing
+Installing
+----------
 
 Clone Git repo:
 ```
@@ -25,7 +26,7 @@ git submodule update --init --recursive
 ```
 
 
-#### Installation of Plugins
+#### Plugins Installation 
 
 The following plugins need special installation procedures
 or have 3rd-party prerequisities:
