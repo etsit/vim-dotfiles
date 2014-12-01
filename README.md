@@ -17,7 +17,7 @@ Update any existing plugins:
 > git submodule update
 
 
-### Installation of Plugins
+#### Installation of Plugins
 
 Update doc after installation with command
 (from Pathogen)
