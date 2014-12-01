@@ -1,6 +1,7 @@
-
-INSTALLATION
+vim-dotfiles
 ============
+
+### Installing
 
 Clone Git repo:
 > git clone git://github.com/etsit/vim-dotfiles.git ~/.vim
@@ -16,8 +17,7 @@ Update any existing plugins:
 > git submodule update
 
 
-INSTALLATION OF PLUGINS
-=======================
+### INSTALLATION OF PLUGINS
 
 Update doc after installation with command
 (from Pathogen)
