@@ -37,6 +37,18 @@ set wrap linebreak nolist
 
 let g:used_javascript_libs = 'jquery,angularjs,angularui,jasmine,underscore'
 
+let g:user_emmet_settings = {
+\ 'php' : {
+\ 'extends' : 'html',
+\ 'filters' : 'c',
+\ },
+\ 'xml' : {
+\ 'extends' : 'html',
+\ },
+\ 'haml' : {
+\ 'extends' : 'html',
+\ },
+\}
 
 " -----
 "  Vim-Latex
