@@ -31,6 +31,8 @@ autocmd FileType make setlocal noexpandtab
 " Soft break on word boundaries, and not showing hidden characters like tab
 set wrap linebreak nolist
 
+" Re-run npm start
+:autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 
 " ----- 
 "  javascript-libraries-syntax.vim
