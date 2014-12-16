@@ -19,38 +19,65 @@ nmap <CR> o<Esc>
 nmap n nzz
 nmap N Nzz
 
+" Soft break on word boundaries, and not showing hidden characters like tab
+set wrap linebreak nolist
+
+" Remapping leader
+let mapleader = ","
+let maplocalleader = ","
+
+" History length
+set history=1000
+
+" File/Command completion (command mode)
+set wildmenu
+" Only complete to point of ambiguity (like shell)
+" set wildmode=list:longest 
+
+" Hidden - Enables background buffers not written to disk
+set hidden
+
+" Visual bell
+set visualbell
+
+" Start scrolling earlier to viewport edge
+set scrolloff=3
+
+" '%' matching also begin/end, xml open/close tags etc
+runtime macros/matchit.vim
+
+
+" -----
+" NPM
+
+" Run npm start
+:autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+:autocmd FileType html nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+:autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+
+
+" ----- 
+"  Tab settings
+
 " General tab settings
 set tabstop=4 shiftwidth=4 expandtab
 
 " makes the spaces feel like real tabs
 set softtabstop=4
 
-" Avoid tab as spaces for 'make'
+" Make - Avoid tab as spaces
 autocmd FileType make setlocal noexpandtab
 
-" Soft break on word boundaries, and not showing hidden characters like tab
-set wrap linebreak nolist
+" CSS
+:autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+:autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
-" Re-run npm start
-:autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 
 " ----- 
 "  javascript-libraries-syntax.vim
 
 let g:used_javascript_libs = 'jquery,angularjs,angularui,jasmine,underscore'
 
-let g:user_emmet_settings = {
-\ 'php' : {
-\ 'extends' : 'html',
-\ 'filters' : 'c',
-\ },
-\ 'xml' : {
-\ 'extends' : 'html',
-\ },
-\ 'haml' : {
-\ 'extends' : 'html',
-\ },
-\}
 
 " -----
 "  Vim-Latex
