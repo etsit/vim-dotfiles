@@ -4,12 +4,17 @@ vim-dotfiles
 Installing
 ----------
 
-Clone Git repo:
+Clone Git repo in ~/.vim
 ```
 git clone git://github.com/etsit/vim-dotfiles.git ~/.vim
 ```
 
-Create symlinks:
+Create directory for temporary and backup files
+```
+mkdir ~/.vim-tmp
+```
+
+Create symlinks
 ```
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
@@ -19,7 +24,7 @@ and if ~/.vim/gvimrc exists,
 ln -s ~/.vim/gvimrc ~/.gvimrc
 ```
 
-Update any existing plugins:
+Update any existing plugins
 ```
 cd ~/.vim
 git submodule update --init --recursive

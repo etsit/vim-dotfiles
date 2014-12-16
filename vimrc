@@ -11,6 +11,10 @@ execute pathogen#infect()
 " ----- 
 "  Misc
 
+" Place backups and temporary files in central storage
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
 " Insertion of new line in normal mode
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
