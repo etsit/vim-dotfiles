@@ -63,18 +63,21 @@ runtime macros/matchit.vim
 " ----- 
 "  Tab settings
 
-" General tab settings
-set tabstop=4 shiftwidth=4 expandtab
-
-" makes the spaces feel like real tabs
-set softtabstop=4
+" Default tab settings
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+" Change tab settings for a specific file type using below (exemplified for
+" css)
+":autocmd FileType css setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 " Make - Avoid tab as spaces
 autocmd FileType make setlocal noexpandtab
 
-" CSS
-:autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
-:autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" ----- 
+" Text formatting
+
+" TeX
+:autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
 
 " ----- 
@@ -109,7 +112,7 @@ let g:Tex_ViewRule_pdf='preview'
 let g:Tex_MultipleCompileFormats='pdf,dvi'
 
 " disable folding
-" let g:Tex_FoldedSections=""
+let g:Tex_FoldedSections=""
 let g:Tex_FoldedEnvironments=""
 let g:Tex_FoldedMisc=""
 
