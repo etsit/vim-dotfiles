@@ -23,6 +23,10 @@ nmap <CR> o<Esc>
 nmap n nzz
 nmap N Nzz
 
+" Clear search highlight
+" NEED TO BE SET!
+" nmap <leader>se :noh<cr>
+
 " Soft break on word boundaries, and not showing hidden characters like tab
 set wrap linebreak nolist
 
@@ -54,10 +58,15 @@ runtime macros/matchit.vim
 " -----
 " NPM
 
-" Run npm start
+" Run 'npm start'
 :autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 :autocmd FileType html nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 :autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+
+" Run 'node bin/www'
+:autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+:autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+:autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 
 
 " ----- 
