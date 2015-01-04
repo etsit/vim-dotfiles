@@ -96,6 +96,16 @@ let g:used_javascript_libs = 'jquery,angularjs,angularui,jasmine,underscore'
 
 
 " -----
+"  vim-easy-align
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+" -----
 "  Vim-Latex
 
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
@@ -112,7 +122,7 @@ set grepprg=grep\ -nH\ $*
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
-" pdf output instead of dvi (default for Mac)
+" pdf output instead of dvi (pdf is default for Mac)
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='preview'
 
