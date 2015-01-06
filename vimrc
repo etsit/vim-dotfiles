@@ -8,53 +8,6 @@
 execute pathogen#infect()
 
 
-" ----- 
-"  Misc
-
-" Place backups and temporary files in central storage
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-" Insertion of new line in normal mode
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
-
-" Center cursor on screen while searching
-nmap n nzz
-nmap N Nzz
-
-" Clear search highlight
-" NEED TO BE SET!
-" nmap <leader>se :noh<cr>
-
-" Soft break on word boundaries, and not showing hidden characters like tab
-set wrap linebreak nolist
-
-" Remapping leader
-let mapleader = ","
-let maplocalleader = ","
-
-" History length
-set history=1000
-
-" File/Command completion (command mode)
-set wildmenu
-" Only complete to point of ambiguity (like shell)
-" set wildmode=list:longest 
-
-" Hidden - Enables background buffers not written to disk
-set hidden
-
-" Visual bell
-set visualbell
-
-" Start scrolling earlier to viewport edge
-set scrolloff=3
-
-" '%' matching also begin/end, xml open/close tags etc
-runtime macros/matchit.vim
-
-
 " -----
 " NPM
 
@@ -67,19 +20,6 @@ runtime macros/matchit.vim
 :autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 :autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 :autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-
-
-" ----- 
-"  Tab settings
-
-" Default tab settings
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-" Change tab settings for a specific file type using below (exemplified for
-" css)
-":autocmd FileType css setlocal tabstop=4 shiftwidth=4 softtabstop=4
-
-" Make - Avoid tab as spaces
-autocmd FileType make setlocal noexpandtab
 
 
 " ----- 
@@ -227,7 +167,6 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-"let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets-bib/snippets'
 
 "autocmd InsertLeave * NeoSnippetClearMarkers
 
@@ -373,4 +312,65 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+
+" ----- 
+"  Tab settings
+
+" Default tab settings
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+" Change tab settings for a specific file type using below (exemplified for
+" css)
+":autocmd FileType css setlocal tabstop=4 shiftwidth=4 softtabstop=4
+
+" Make - Avoid tab as spaces
+autocmd FileType make setlocal noexpandtab
+
+
+" ----- 
+"  Misc
+
+" Place backups and temporary files in central storage
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" Insertion of new line in normal mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
+" Center cursor on screen while searching
+nmap n nzz
+nmap N Nzz
+
+" Clear search highlight
+" NEED TO BE SET!
+nmap !n :noh<cr>
+
+" Soft break on word boundaries, and not showing hidden characters like tab
+set wrap linebreak nolist
+
+" Remapping leader
+let mapleader = ","
+let maplocalleader = ","
+
+" History length
+set history=1000
+
+" File/Command completion (command mode)
+set wildmenu
+" Only complete to point of ambiguity (like shell)
+" set wildmode=list:longest 
+
+" Hidden - Enables background buffers not written to disk
+"set hidden
+
+" Visual bell
+set visualbell
+
+" Start scrolling earlier to viewport edge
+set scrolloff=3
+
+" '%' matching also begin/end, xml open/close tags etc
+runtime macros/matchit.vim
+
 
