@@ -35,18 +35,21 @@ git submodule update --init --recursive
 
 The following plugins need special installation procedures
 or have 3rd-party prerequisities:
-- Syntastic: 
-    - https://github.com/scrooloose/syntastic
-    - Using JSHint:
-        - (sudo) npm install -g jshint
-        - https://github.com/scrooloose/syntastic/wiki/JavaScript:---jshint
-- YouCompleteMe: 
-    - http://valloric.github.io/YouCompleteMe/
-        - Easiest install: cd ~/.vim/bundle/YouCompleteMe && ./install.sh
-- Tern for Vim: 
-    - https://github.com/marijnh/tern_for_vim
-        - In bundle/tern_for_vim: npm install
-          - Can't use NVM node
+- Syntastic
+  - https://github.com/scrooloose/syntastic
+  - Using JSHint:
+      - (sudo) npm install -g jshint
+      - https://github.com/scrooloose/syntastic/wiki/JavaScript:---jshint
+- Tern for Vim
+  - https://github.com/marijnh/tern_for_vim
+      - In bundle/tern_for_vim: npm install
+        - Can't use NVM node
+- neocomplete.vim
+  - Requires vim compiled with Lua support (if\_lua)
+    - On Mac OS X using Homebrew:
+      ```
+      brew install macvim --with-lua --with-luajit --HEAD --with-cscope --override-system-vim
+      ```
 
 Update documentation after installation (with command from Pathogen)
 ```
