@@ -38,12 +38,12 @@ or have 3rd-party prerequisities:
 - Syntastic
   - https://github.com/scrooloose/syntastic
   - Using JSHint:
-      - ``` (sudo) npm install -g jshint ```
+      - ```(sudo) npm install -g jshint```
       - https://github.com/scrooloose/syntastic/wiki/JavaScript:---jshint
 - Tern for Vim
   - https://github.com/marijnh/tern_for_vim
-      - In bundle/tern_for_vim: npm install
-        - Can't use NVM node
+      - In bundle/tern_for_vim: ```npm install```
+        - Can't use node NVM installation
 - neocomplete
   - Requires vim compiled with Lua support
     - On Mac OS X using Homebrew:
