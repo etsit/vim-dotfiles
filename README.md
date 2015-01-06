@@ -46,8 +46,8 @@ or have 3rd-party prerequisities:
         - Can't use node NVM installation
 - neocomplete
   - Requires vim compiled with Lua support
-    - On Mac OS X using Homebrew:
-      - ```brew install macvim --with-lua --with-luajit --HEAD --with-cscope --override-system-vim```
+    - Example on Mac OS X using Homebrew (incl. extra options):
+      - ```brew install macvim --with-lua --with-luajit --with-cscope --override-system-vim --HEAD```
 
 Update documentation after installation (with command from Pathogen)
 ```
