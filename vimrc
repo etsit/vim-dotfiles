@@ -1,42 +1,21 @@
 
 
 " -----
-"  Pathogen
+"  Plugin - Pathogen
 
 " Must be called before file type detection (I think)
 " i.e. filetype plugin indent on
 execute pathogen#infect()
 
 
-" -----
-" NPM
-
-" Run 'npm start'
-:autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-:autocmd FileType html nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-:autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-
-" Run 'node bin/www'
-:autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-:autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-:autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-
-
 " ----- 
-" Text formatting
-
-" TeX
-:autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
-
-
-" ----- 
-"  javascript-libraries-syntax.vim
+"  Plugin - javascript-libraries-syntax.vim
 
 let g:used_javascript_libs = 'jquery,angularjs,angularui,jasmine,underscore'
 
 
 " -----
-"  vim-easy-align
+"  Plugin - vim-easy-align
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -46,7 +25,7 @@ nmap ga <Plug>(EasyAlign)
 
 
 " -----
-"  vim-sparkup
+"  Plugin - vim-sparkup
 
 " Change mapping to avoid conflict with neosnippet.vim
 let g:sparkupExecuteMapping = '<c-s>'
@@ -54,7 +33,7 @@ let g:sparkupNextMapping = '<c-d>'
 
 
 " -----
-"  neocomplete.vim
+"  Plugin - neocomplete.vim
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -142,7 +121,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 " -----
-"  neocomplete.vim
+"  Plugin - neocomplete.vim
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -172,7 +151,7 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 
 " -----
-"  Vim-Latex
+"  Plugin - Vim-Latex
 
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
 " can be called correctly.
@@ -206,13 +185,23 @@ imap <c-i> <Plug>Tex_InsertItemOnThisLine
 
 
 " -----
-"  Solarized
+"  Plugin - Solarized
 
 " 'If you do use the custom terminal colors, simply add the following line before the colorschem solarized line'
 let g:solarized_termcolors=16
 set background=light
 " set background=dark
 colorscheme solarized
+
+
+" -----
+"  Formatting JSON
+
+function! FormatJSON() 
+  :%!python -m json.tool 
+endfunction
+com! FormatJSON call FormatJSON()
+"nmap =j :call FormatJSON()<CR>
 
 
 " -----
@@ -317,6 +306,27 @@ if !exists(":DiffOrig")
 endif
 
 
+" -----
+" NPM
+
+" Run 'npm start'
+:autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+:autocmd FileType html nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+:autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+
+" Run 'node bin/www'
+:autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+:autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+:autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+
+
+" ----- 
+" Text formatting
+
+" TeX
+:autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
+
+
 " ----- 
 "  Tab settings
 
@@ -365,7 +375,7 @@ set wildmenu
 " set wildmode=list:longest 
 
 " Hidden - Enables background buffers not written to disk
-"set hidden
+set hidden
 
 " Visual bell
 set visualbell
