@@ -42,7 +42,7 @@ or have 3rd-party prerequisities:
 - Tern for Vim: https://github.com/marijnh/tern_for_vim
   - In bundle/tern_for_vim: ```npm install```
     - Can't use node NVM installation
-- neocomplete: https://github.com/Shougo/neocomplete.vim
+- Neocomplete: https://github.com/Shougo/neocomplete.vim
   - Requires vim compiled with Lua support
     - Example on Mac OS X using Homebrew (incl. extra options): ```brew install macvim --with-lua --with-luajit --with-cscope --override-system-vim --HEAD```
 
