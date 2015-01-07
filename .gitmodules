@@ -49,3 +49,6 @@
 [submodule "bundle/snipmate-snippets-bib"]
 	path = bundle/snipmate-snippets-bib
 	url = https://github.com/rbonvall/snipmate-snippets-bib
+[submodule "bundle/vim-latex"]
+	path = bundle/vim-latex
+	url = https://github.com/vim-latex/vim-latex

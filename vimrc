@@ -201,6 +201,9 @@ let g:Tex_FoldedSections=""
 let g:Tex_FoldedEnvironments=""
 let g:Tex_FoldedMisc=""
 
+" Map insertion of new item, since Alt-i doesn't work
+imap <c-i> <Plug>Tex_InsertItemOnThisLine
+
 
 " -----
 "  Solarized
