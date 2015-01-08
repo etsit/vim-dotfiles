@@ -317,42 +317,28 @@ if !exists(":DiffOrig")
 endif
 
 
-" -----
-" NPM
-
-" Run 'npm start'
-:autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-:autocmd FileType html nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-:autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-
-" Run 'node bin/www'
-:autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-:autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-:autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-
-
 " ----- 
-" Text formatting
+"  Misc
 
-" TeX
-:autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
-
-
-" ----- 
 "  Tab settings
-
 " Default tab settings
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " Change tab settings for a specific file type using below (exemplified for
 " css)
 ":autocmd FileType css setlocal tabstop=4 shiftwidth=4 softtabstop=4
-
 " Make - Avoid tab as spaces
 autocmd FileType make setlocal noexpandtab
 
+" TeX
+:autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
-" ----- 
-"  Misc
+" Window splitting
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <leader>s <C-w>s
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Place backups and temporary files in central storage
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -397,4 +383,13 @@ set scrolloff=3
 " '%' matching also begin/end, xml open/close tags etc
 runtime macros/matchit.vim
 
+" Run 'npm start'
+:autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+:autocmd FileType html nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+:autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+
+" Run 'node bin/www'
+:autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+:autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+:autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 
