@@ -189,14 +189,20 @@ imap <c-i> <Plug>Tex_InsertItemOnThisLine
 
 " 'If you do use the custom terminal colors, simply add the following line before the colorschem solarized line'
 let g:solarized_termcolors=16
-set background=light
-" set background=dark
+set background=dark
+"set background=light
 colorscheme solarized
 
 
 " -----
 "  Plugin - gundo.vim
 nnoremap <F2> :GundoToggle<CR>
+
+
+" -----
+"  Plugin - vim-airline
+
+let g:airline#extensions#tabline#enabled = 1
 
 
 " -----
