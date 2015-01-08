@@ -202,6 +202,9 @@ nnoremap <F2> :GundoToggle<CR>
 " -----
 "  Plugin - vim-airline
 
+" Required to show airline in single window
+set laststatus=2
+" Top buffer bar
 let g:airline#extensions#tabline#enabled = 1
 
 
