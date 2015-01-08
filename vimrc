@@ -195,6 +195,11 @@ colorscheme solarized
 
 
 " -----
+"  Plugin - gundo.vim
+nnoremap <F2> :GundoToggle<CR>
+
+
+" -----
 "  Formatting JSON
 
 function! FormatJSON() 
