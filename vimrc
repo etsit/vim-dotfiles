@@ -181,7 +181,7 @@ let g:Tex_FoldedEnvironments=""
 let g:Tex_FoldedMisc=""
 
 " Map insertion of new item, since Alt-i doesn't work
-imap <c-i> <Plug>Tex_InsertItemOnThisLine
+imap <c-o> <Plug>Tex_InsertItemOnThisLine
 
 
 " -----
@@ -206,6 +206,13 @@ nnoremap <F2> :GundoToggle<CR>
 set laststatus=2
 " Top buffer bar
 let g:airline#extensions#tabline#enabled = 1
+
+
+" -----
+"  Plugin - ctrlp.vim
+
+let g:ctrlp_open_multiple_files = '10tjr'
+let g:ctrlp_working_path_mode = 'ra'
 
 
 " -----
@@ -334,14 +341,6 @@ autocmd FileType make setlocal noexpandtab
 
 " TeX
 :autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
-
-" Window splitting
-nnoremap <leader>v <C-w>v<C-w>l
-nnoremap <leader>s <C-w>s
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " Place backups and temporary files in central storage
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
