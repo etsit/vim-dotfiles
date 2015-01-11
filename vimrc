@@ -330,6 +330,9 @@ endif
 " ----- 
 "  Misc
 
+" set number
+set nu
+
 "  Tab settings
 " Default tab settings
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -394,4 +397,11 @@ runtime macros/matchit.vim
 :autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 :autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 :autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+
+" Edit vimrc
+nnoremap <leader>ev :tabnew ~/.vim/vimrc<CR>
+
+" {} and [] blocks
+:inoremap <localleader>{ {<CR>}<Esc>O
+:inoremap <localleader>[ [<CR>];<Esc>O
 
