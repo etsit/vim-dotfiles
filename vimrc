@@ -421,3 +421,22 @@ inoremap <localleader>} {<CR>};<Esc>O
 " Scroll other window
 nnoremap <leader>j <c-w>w<c-e><c-w>w
 nnoremap <leader>k <c-w>w<c-y><c-w>w 
+
+" Abbreviations
+" Note: Latex-Suite is hijacking normal maps using ab,
+" therefore mappings are done using suggestions at
+" http://vim-latex.sourceforge.net/documentation/latex-suite/ls-new-macros.html
+" (Not filetype specific below)
+augroup MyIMAPs
+    au!
+    au VimEnter * call IMAP('wwetal', 'et~al.\ ', '')
+    au VimEnter * call IMAP('wwetas', 'et~al.''s', '')
+    au VimEnter * call IMAP('wwcetal', 'Cooper~et~al.\ ', '')
+    au VimEnter * call IMAP('wwcetas', 'Cooper~et~al.''s', '')
+    au VimEnter * call IMAP('wwgdd', '\mbox{Goal-Directed}~Design', '')
+    au VimEnter * call IMAP('wwng', 'AngularJS', '')
+    au VimEnter * call IMAP('wwnode', 'Node.js', '')
+    au VimEnter * call IMAP('wwjs', 'JavaScript', '')
+    au VimEnter * call IMAP('wwspq', 'SPARQL', '')
+    au VimEnter * call IMAP('wwspe', 'SPARQL\ endpoint', '')
+augroup END
