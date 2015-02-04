@@ -337,6 +337,10 @@ endif
 " ----- 
 "  Misc
 
+" Mapping jk as Escape
+" Note, no comments shall be placed on the same line
+:inoremap jk <Esc>
+
 "  Tab settings
 " Default tab settings
 set tabstop=2                   "A tab is 8 spaces
@@ -387,6 +391,9 @@ set wildmenu
 " Only complete to point of ambiguity (like shell)
 " set wildmode=list:longest 
 
+" Search with \c and \C to override
+set smartcase
+
 " Hidden - Enables background buffers not written to disk
 set hidden
 
@@ -430,13 +437,10 @@ nnoremap <leader>k <c-w>w<c-y><c-w>w
 augroup MyIMAPs
     au!
     au VimEnter * call IMAP('wwetal', 'et~al.\ ', '')
-    au VimEnter * call IMAP('wwetas', 'et~al.''s', '')
     au VimEnter * call IMAP('wwcetal', 'Cooper~et~al.\ ', '')
-    au VimEnter * call IMAP('wwcetas', 'Cooper~et~al.''s', '')
     au VimEnter * call IMAP('wwgdd', '\mbox{Goal-Directed}~Design', '')
     au VimEnter * call IMAP('wwng', 'AngularJS', '')
     au VimEnter * call IMAP('wwnode', 'Node.js', '')
     au VimEnter * call IMAP('wwjs', 'JavaScript', '')
-    au VimEnter * call IMAP('wwspq', 'SPARQL', '')
-    au VimEnter * call IMAP('wwspe', 'SPARQL\ endpoint', '')
+    au VimEnter * call IMAP('wwsp', 'SPARQL', '')
 augroup END
