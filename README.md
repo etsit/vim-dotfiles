@@ -45,6 +45,13 @@ or have 3rd-party prerequisities:
 - Neocomplete: https://github.com/Shougo/neocomplete.vim
   - Requires vim compiled with Lua support
     - Example on Mac OS X using Homebrew (incl. extra options): ```brew install macvim --with-lua --with-luajit --with-cscope --override-system-vim --HEAD```
+    - Example on ELinux (Debian):
+      - Some prerequisities: ```sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev ruby-dev libluajit-5.1-dev```
+      - ```./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-gui=gtk2 --enable-cscope --enable-luainterp --with-lua-prefix=/usr --with-luajit```
+      - ```make && sudo make install```
+- vim-hdevtools
+  - Relies on Syntastic
+  - hdevtools installed using cabal: ```cabal install hdevtools```
 
 Update documentation after installation (with command from Pathogen)
 ```

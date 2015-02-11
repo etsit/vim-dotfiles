@@ -335,6 +335,13 @@ endif
 
 
 " ----- 
+"  vim-hdevtools
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
+let g:syntastic_haskell_hdevtools_args = '-g -Wall'
+
+
+" ----- 
 "  Misc
 
 " Mapping jk as Escape
@@ -443,4 +450,5 @@ augroup MyIMAPs
     au VimEnter * call IMAP('wwnode', 'Node.js', '')
     au VimEnter * call IMAP('wwjs', 'JavaScript', '')
     au VimEnter * call IMAP('wwsp', 'SPARQL', '')
+    au VimEnter * call IMAP('wwsrl', 'Spuirrel', '')
 augroup END
