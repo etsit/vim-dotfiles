@@ -73,3 +73,6 @@
 [submodule "bundle/vim-hdevtools"]
 	path = bundle/vim-hdevtools
 	url = https://github.com/bitc/vim-hdevtools
+[submodule "bundle/haskellmode-vim"]
+	path = bundle/haskellmode-vim
+	url = https://github.com/lukerandall/haskellmode-vim

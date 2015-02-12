@@ -49,9 +49,14 @@ or have 3rd-party prerequisities:
       - Some prerequisities: ```sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev ruby-dev libluajit-5.1-dev```
       - ```./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-gui=gtk2 --enable-cscope --enable-luainterp --with-lua-prefix=/usr --with-luajit```
       - ```make && sudo make install```
-- vim-hdevtools
-  - Relies on Syntastic
+- vim-hdevtools: https://github.com/bitc/vim-hdevtools
+  - ghc/ghci
   - hdevtools installed using cabal: ```cabal install hdevtools```
+  - Relies on Syntastic
+- haskellmode-vim: https://github.com/lukerandall/haskellmode-vim
+  - ghc/ghci
+    - Haddock indexed doc (usually comes with ghc)
+  - wget
 
 Update documentation after installation (with command from Pathogen)
 ```

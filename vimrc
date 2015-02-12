@@ -335,11 +335,19 @@ endif
 
 
 " ----- 
-"  vim-hdevtools
+"  Plugin - vim-hdevtools
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
 let g:syntastic_haskell_hdevtools_args = '-g -Wall'
 
+
+" -----
+"  Plugin - haskellmode-vim
+au BufEnter *.hs compiler ghc
+" Decide which version of ghc to use
+":let g:ghc="/usr/bin/ghc-6.6.1"
+" Default browser for docs
+let g:haddock_browser="/Applications/Firefox.app/Contents/MacOS/firefox"
 
 " ----- 
 "  Misc
