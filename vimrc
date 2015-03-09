@@ -119,10 +119,6 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-
-" -----
-"  Plugin - neocomplete.vim
-
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -211,7 +207,8 @@ let g:airline#extensions#tabline#enabled = 1
 " -----
 "  Plugin - ctrlp.vim
 
-let g:ctrlp_open_multiple_files = '10tjr'
+let g:ctrlp_open_multiple_files = '1ij'
+"let g:ctrlp_open_multiple_files = '10tjr'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_cmd = 'CtrlPMRU'
 
@@ -220,6 +217,22 @@ let g:ctrlp_cmd = 'CtrlPMRU'
 "  Plugin - tern_for_vim
 
 let g:tern_map_keys=1
+
+
+" ----- 
+"  Plugin - vim-hdevtools
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
+let g:syntastic_haskell_hdevtools_args = '-g -Wall'
+
+
+" -----
+"  Plugin - haskellmode-vim
+au BufEnter *.hs compiler ghc
+" Decide which version of ghc to use
+":let g:ghc="/usr/bin/ghc-6.6.1"
+" Default browser for docs
+let g:haddock_browser="/Applications/Firefox.app/Contents/MacOS/firefox"
 
 
 " -----
@@ -335,68 +348,32 @@ endif
 
 
 " ----- 
-"  Plugin - vim-hdevtools
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
-let g:syntastic_haskell_hdevtools_args = '-g -Wall'
-
-
-" -----
-"  Plugin - haskellmode-vim
-au BufEnter *.hs compiler ghc
-" Decide which version of ghc to use
-":let g:ghc="/usr/bin/ghc-6.6.1"
-" Default browser for docs
-let g:haddock_browser="/Applications/Firefox.app/Contents/MacOS/firefox"
-
-" ----- 
 "  Misc
 
-" Mapping jk as Escape
-" Note, no comments shall be placed on the same line
-:inoremap jk <Esc>
+" '%' matching also begin/end, xml open/close tags etc
+runtime macros/matchit.vim
+
+" Remapping leader
+let mapleader = ","
+let maplocalleader = ","
 
 "  Tab settings
 " Default tab settings
-set tabstop=2                   "A tab is 8 spaces
+set tabstop=4                   "A tab is 4 spaces
 set expandtab                   "Always uses spaces instead of tabs
-set softtabstop=2               "Insert 4 spaces when tab is pressed
-set shiftwidth=2                "An indent is 4 spaces
+set softtabstop=4               "Insert 4 spaces when tab is pressed
+set shiftwidth=4                "An indent is 4 spaces
 set shiftround                  "Round indent to nearest shiftwidth multiple
-" Change tab settings for a specific file type 
-" Make - Avoid tab as spaces
-autocmd FileType make setlocal noexpandtab
-" CSS
-"autocmd FileType css setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 " Show line numbers
 set nu
-
-" TeX
-autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
 " Place backups and temporary files in central storage
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" Insertion of new line in normal mode
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
-
-" Center cursor on screen while searching
-nmap n nzz
-nmap N Nzz
-
-" Clear search highlight
-" NEED TO BE SET!
-nmap !n :noh<cr>
-
 " Soft break on word boundaries, and not showing hidden characters like tab
 set wrap linebreak nolist
-
-" Remapping leader
-let mapleader = ","
-let maplocalleader = ","
 
 " History length
 set history=1000
@@ -418,8 +395,49 @@ set visualbell
 " Start scrolling earlier to viewport edge
 set scrolloff=3
 
-" '%' matching also begin/end, xml open/close tags etc
-runtime macros/matchit.vim
+" Remove right scroll bar
+set guioptions-=r
+
+" Mapping jk as Escape
+" Note, no comments shall be placed on the same line
+inoremap jk <Esc>
+
+" 'Stamping' - Mappings for replace
+nnoremap Y diw"0P
+xnoremap Y d"0P
+nnoremap S "_diw""P
+"Taken by surround.vim
+"xnoremap S "_d""P
+
+" Center cursor on screen while searching
+nmap n nzz
+nmap N Nzz
+
+" Clear search highlight
+nnoremap <leader><leader> :noh<cr>
+" Edit vimrc
+nnoremap <leader>ev :tabnew ~/.vim/vimrc<CR>
+
+" {} and [] blocks
+inoremap <localleader>[ [<CR>]<Esc>O
+inoremap <localleader>] [<CR>];<Esc>O
+inoremap <localleader>{ {<CR>}<Esc>O
+inoremap <localleader>} {<CR>};<Esc>O
+
+" Buffer shortcuts
+nnoremap <leader>f :bn<CR>
+nnoremap <leader>b :bp<CR>
+nnoremap <leader>d :bd<CR>
+
+" Change tab settings for a specific file type 
+" Make - Avoid tab as spaces
+autocmd FileType make setlocal noexpandtab
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" TeX
+autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
 " Run 'npm start'
 autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
@@ -430,19 +448,6 @@ autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-
-" Edit vimrc
-nnoremap <leader>ev :tabnew ~/.vim/vimrc<CR>
-
-" {} and [] blocks
-inoremap <localleader>[ [<CR>]<Esc>O
-inoremap <localleader>] [<CR>];<Esc>O
-inoremap <localleader>{ {<CR>}<Esc>O
-inoremap <localleader>} {<CR>};<Esc>O
-
-" Scroll other window
-nnoremap <leader>j <c-w>w<c-e><c-w>w
-nnoremap <leader>k <c-w>w<c-y><c-w>w 
 
 " Abbreviations
 " Note: Latex-Suite is hijacking normal maps using ab,
@@ -460,3 +465,4 @@ augroup MyIMAPs
     au VimEnter * call IMAP('wwsp', 'SPARQL', '')
     au VimEnter * call IMAP('wwsrl', 'Spuirrel', '')
 augroup END
+
