@@ -17,6 +17,9 @@ let g:used_javascript_libs = 'jquery,angularjs,angularui,jasmine,underscore'
 " -----
 "  Plugin - vim-easy-align
 
+" Ignore lines that don't include delimiter
+let g:easy_align_ignore_unmatched = 0 
+
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 
@@ -416,13 +419,16 @@ nmap N Nzz
 " Clear search highlight
 nnoremap <leader><leader> :noh<cr>
 " Edit vimrc
-nnoremap <leader>ev :tabnew ~/.vim/vimrc<CR>
+nnoremap <leader>ev :e ~/.vim/vimrc<CR>
 
 " {} and [] blocks
-inoremap <localleader>[ [<CR>]<Esc>O
-inoremap <localleader>] [<CR>];<Esc>O
-inoremap <localleader>{ {<CR>}<Esc>O
-inoremap <localleader>} {<CR>};<Esc>O
+inoremap <localleader>[ [<Esc>o]<Esc>O
+inoremap <localleader>] [<Esc>o];<Esc>O
+inoremap <localleader>{ {<Esc>o}<Esc>O
+inoremap <localleader>} {<Esc>o};<Esc>O
+inoremap <localleader>( ()<Esc>i
+" Note that } is also inserted 
+inoremap <localleader>) {<Esc>o});<Esc>O
 
 " Buffer shortcuts
 nnoremap <leader>f :bn<CR>
@@ -432,6 +438,7 @@ nnoremap <leader>d :bd<CR>
 " Change tab settings for a specific file type 
 " Make - Avoid tab as spaces
 autocmd FileType make setlocal noexpandtab
+autocmd FileType cucumber setlocal noexpandtab
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -465,4 +472,7 @@ augroup MyIMAPs
     au VimEnter * call IMAP('wwsp', 'SPARQL', '')
     au VimEnter * call IMAP('wwsrl', 'Spuirrel', '')
 augroup END
+
+" Set filetype html for *.ejs (Embedded JavaScript templates)
+au BufNewFile,BufRead *.ejs set filetype=html
 
