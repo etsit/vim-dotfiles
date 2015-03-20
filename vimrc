@@ -350,6 +350,30 @@ if !exists(":DiffOrig")
 endif
 
 
+" -----
+"  vim-cofee-script
+
+" Compile on write
+" - silent: Don't show compiler output in bottom window
+" - !:      Don't jump to line of error
+autocmd BufWritePost *.coffee silent make!
+autocmd BufWritePost *.coffee :CoffeeLint! | cwindow
+
+" Show quickfix window if errors on compile
+autocmd QuickFixCmdPost * nested cwindow | redraw!
+
+" Folding
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+
+" Open temporary compilation output buffer in vertical mode
+let coffee_compile_vert = 1
+let coffee_watch_vert   = 1
+let coffee_run_vert     = 1
+
+" CoffeeLint
+let coffee_lint_options = '-f ~/Dropbox/config/macosx/coffeelint/coffeelint.json'
+
+
 " ----- 
 "  Misc
 
@@ -362,11 +386,11 @@ let maplocalleader = ","
 
 "  Tab settings
 " Default tab settings
-set tabstop=4                   "A tab is 4 spaces
-set expandtab                   "Always uses spaces instead of tabs
-set softtabstop=4               "Insert 4 spaces when tab is pressed
-set shiftwidth=4                "An indent is 4 spaces
-set shiftround                  "Round indent to nearest shiftwidth multiple
+set tabstop=4     "A tab is 4 spaces
+set expandtab     "Always uses spaces instead of tabs
+set softtabstop=4 "Insert 4 spaces when tab is pressed
+set shiftwidth=4  "An indent is 4 spaces
+set shiftround    "Round indent to nearest shiftwidth multiple
 
 " Show line numbers
 set nu
@@ -405,9 +429,10 @@ set guioptions-=r
 " Note, no comments shall be placed on the same line
 inoremap jk <Esc>
 
+" Make C, D and Y consistent
+nnoremap Y y$
+
 " 'Stamping' - Mappings for replace
-nnoremap Y diw"0P
-xnoremap Y d"0P
 nnoremap S "_diw""P
 "Taken by surround.vim
 "xnoremap S "_d""P
@@ -435,26 +460,42 @@ nnoremap <leader>f :bn<CR>
 nnoremap <leader>b :bp<CR>
 nnoremap <leader>d :bd<CR>
 
+" Show quickfix window
+nnoremap <leader>qf :cwindow<CR>
+
+" CoffeeScript shortcuts
+nnoremap <localleader>gr :CoffeeRun<CR>
+xnoremap <localleader>gr :CoffeeRun<CR>
+nnoremap <localleader>gw :CoffeeWatch<CR>
+xnoremap <localleader>gw :CoffeeWatch<CR>
+nnoremap <localleader>gl :CoffeeLint<CR>
+xnoremap <localleader>gl :CoffeeLint<CR>
+
+" Make shortcuts
+nnoremap <localleader>m :make<CR>
+
 " Change tab settings for a specific file type 
 " Make - Avoid tab as spaces
-autocmd FileType make setlocal noexpandtab
-autocmd FileType cucumber setlocal noexpandtab
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType make       setlocal noexpandtab
+autocmd FileType cucumber   setlocal noexpandtab
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css        setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html       setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType coffee     setlocal shiftwidth=2
+"autocmd BufNewFile,BufReadPost *.coffee   setl     shiftwidth=2
 
 " TeX
 autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
 " Run 'npm start'
 autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-autocmd FileType html nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-autocmd FileType css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+autocmd FileType html       nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+autocmd FileType css        nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 
 " Run 'node bin/www'
 autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-autocmd FileType html nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+autocmd FileType html       nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+autocmd FileType css        nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 
 " Abbreviations
 " Note: Latex-Suite is hijacking normal maps using ab,
@@ -463,14 +504,14 @@ autocmd FileType css nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
 " (Not filetype specific below)
 augroup MyIMAPs
     au!
-    au VimEnter * call IMAP('wwetal', 'et~al.\ ', '')
-    au VimEnter * call IMAP('wwcetal', 'Cooper~et~al.\ ', '')
-    au VimEnter * call IMAP('wwgdd', '\mbox{Goal-Directed}~Design', '')
-    au VimEnter * call IMAP('wwng', 'AngularJS', '')
-    au VimEnter * call IMAP('wwnode', 'Node.js', '')
-    au VimEnter * call IMAP('wwjs', 'JavaScript', '')
-    au VimEnter * call IMAP('wwsp', 'SPARQL', '')
-    au VimEnter * call IMAP('wwsrl', 'Spuirrel', '')
+    au  VimEnter * call IMAP('wwetal',  'et~al.\ ',                    '')
+    au  VimEnter * call IMAP('wwcetal', 'Cooper~et~al.\ ',             '')
+    au  VimEnter * call IMAP('wwgdd',   '\mbox{Goal-Directed}~Design', '')
+    au  VimEnter * call IMAP('wwng',    'AngularJS',                   '')
+    au  VimEnter * call IMAP('wwnode',  'Node.js',                     '')
+    au  VimEnter * call IMAP('wwjs',    'JavaScript',                  '')
+    au  VimEnter * call IMAP('wwsp',    'SPARQL',                      '')
+    au  VimEnter * call IMAP('wwsrl',   'Spuirrel',                    '')
 augroup END
 
 " Set filetype html for *.ejs (Embedded JavaScript templates)
