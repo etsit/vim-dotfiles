@@ -33,6 +33,7 @@ nmap ga <Plug>(EasyAlign)
 " Change mapping to avoid conflict with neosnippet.vim
 let g:sparkupExecuteMapping = '<c-s>'
 let g:sparkupNextMapping = '<c-d>'
+let g:sparkupDoubleQuote = 1
 
 
 " -----
@@ -351,19 +352,19 @@ endif
 
 
 " -----
-"  vim-cofee-script
+"  vim-coffee-script
 
 " Compile on write
 " - silent: Don't show compiler output in bottom window
 " - !:      Don't jump to line of error
-autocmd BufWritePost *.coffee silent make!
-autocmd BufWritePost *.coffee :CoffeeLint! | cwindow
+"autocmd BufWritePost *.coffee silent make!
+"autocmd BufWritePost *.coffee :CoffeeLint! | cwindow
 
 " Show quickfix window if errors on compile
-autocmd QuickFixCmdPost * nested cwindow | redraw!
+"autocmd QuickFixCmdPost * nested cwindow | redraw!
 
 " Folding
-autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+"autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 
 " Open temporary compilation output buffer in vertical mode
 let coffee_compile_vert = 1
@@ -463,7 +464,10 @@ nnoremap <leader>d :bd<CR>
 " Show quickfix window
 nnoremap <leader>qf :cwindow<CR>
 
-" CoffeeScript shortcuts
+" Shortcuts - Make 
+nnoremap <localleader>m :make<CR>
+
+" Shortcuts - CoffeeScript 
 nnoremap <localleader>gr :CoffeeRun<CR>
 xnoremap <localleader>gr :CoffeeRun<CR>
 nnoremap <localleader>gw :CoffeeWatch<CR>
@@ -474,6 +478,9 @@ xnoremap <localleader>gl :CoffeeLint<CR>
 " Make shortcuts
 nnoremap <localleader>m :make<CR>
 
+" Open Firefox
+nnoremap <localleader>nf :!open -a firefox %<CR>
+
 " Change tab settings for a specific file type 
 " Make - Avoid tab as spaces
 autocmd FileType make       setlocal noexpandtab
@@ -481,21 +488,14 @@ autocmd FileType cucumber   setlocal noexpandtab
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css        setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html       setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType coffee     setlocal shiftwidth=2
+autocmd FileType coffee     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 "autocmd BufNewFile,BufReadPost *.coffee   setl     shiftwidth=2
 
 " TeX
 autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
 " Run 'npm start'
-autocmd FileType javascript nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-autocmd FileType html       nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-autocmd FileType css        nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-
-" Run 'node bin/www'
-autocmd FileType javascript nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-autocmd FileType html       nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
-autocmd FileType css        nnoremap <buffer> <localleader>nw :!node<space>bin/www<cr>
+autocmd FileType javascript,coffee,html,css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 
 " Abbreviations
 " Note: Latex-Suite is hijacking normal maps using ab,
