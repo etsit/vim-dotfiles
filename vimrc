@@ -467,7 +467,8 @@ inoremap <localleader>) {<Esc>o});<Esc>O
 " Buffer shortcuts
 nnoremap <leader>f :bn<CR>
 nnoremap <leader>b :bp<CR>
-nnoremap <leader>d :bd<CR>
+" Calling vim-bbye instead of built-in
+nnoremap <leader>d :Bdelete<CR>
 
 " Show quickfix window
 nnoremap <leader>qf :cwindow<CR>
