@@ -214,7 +214,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_open_multiple_files = '1ij'
 "let g:ctrlp_open_multiple_files = '10tjr'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_cmd = 'CtrlPMRU'
 
 
 " -----
@@ -376,13 +377,20 @@ let coffee_lint_options = '-f ~/Dropbox/config/macosx/coffeelint/coffeelint.json
 
 
 " ----- 
+"  vim-session
+
+let g:session_autosave = "no"
+let g:session_directory = "~/Dropbox/config/macosx/vim/sessions"
+
+
+" ----- 
 "  Misc
 
 " '%' matching also begin/end, xml open/close tags etc
 runtime macros/matchit.vim
 
 " Remapping leader
-let mapleader = ","
+let mapleader      = ","
 let maplocalleader = ","
 
 "  Tab settings
@@ -434,9 +442,9 @@ inoremap jk <Esc>
 nnoremap Y y$
 
 " 'Stamping' - Mappings for replace
-nnoremap S "_diw""P
+nnoremap S "_diw""Pb
 "Taken by surround.vim
-"xnoremap S "_d""P
+"xnoremap S "_d""Pb
 
 " Center cursor on screen while searching
 nmap n nzz
@@ -468,12 +476,15 @@ nnoremap <leader>qf :cwindow<CR>
 nnoremap <localleader>m :make<CR>
 
 " Shortcuts - CoffeeScript 
-nnoremap <localleader>gr :CoffeeRun<CR>
-xnoremap <localleader>gr :CoffeeRun<CR>
-nnoremap <localleader>gw :CoffeeWatch<CR>
-xnoremap <localleader>gw :CoffeeWatch<CR>
-nnoremap <localleader>gl :CoffeeLint<CR>
-xnoremap <localleader>gl :CoffeeLint<CR>
+nnoremap <localleader>or :CoffeeRun<CR>
+xnoremap <localleader>or :CoffeeRun<CR>
+nnoremap <localleader>ow :CoffeeWatch<CR>
+xnoremap <localleader>ow :CoffeeWatch<CR>
+nnoremap <localleader>ol :CoffeeLint<CR>
+xnoremap <localleader>ol :CoffeeLint<CR>
+
+" Shortcuts - Gulp
+nnoremap <localleader>gb :!gulp build<CR>
 
 " Make shortcuts
 nnoremap <localleader>m :make<CR>
@@ -488,17 +499,20 @@ autocmd FileType cucumber   setlocal noexpandtab
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css        setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html       setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json       setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType coffee     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 "autocmd BufNewFile,BufReadPost *.coffee   setl     shiftwidth=2
 
 " TeX
 autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
-" Run 'npm start'
-autocmd FileType javascript,coffee,html,css nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+" NPM
+autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nb :!npm<space>run<space>build<cr>
+autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nl :!npm<space>run<space>build<space>&&<space>npm<space>start<cr>
 
 " Abbreviations
-" Note: Latex-Suite is hijacking normal maps using ab,
+" Note: Latex-Suite is hijacking normal abbreviations using ab,
 " therefore mappings are done using suggestions at
 " http://vim-latex.sourceforge.net/documentation/latex-suite/ls-new-macros.html
 " (Not filetype specific below)
