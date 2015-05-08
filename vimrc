@@ -399,6 +399,16 @@ let g:session_directory = "~/Dropbox/config/macosx/vim/sessions"
 
 
 " ----- 
+"  NERDTree
+
+" Open NERDTree on vim startup (Interferes with sessions)
+"autocmd VimEnter * NERDTree
+
+" Close NERDTree if it's the only thing open
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+" ----- 
 "  Misc
 
 " '%' matching also begin/end, xml open/close tags etc
@@ -501,6 +511,9 @@ nnoremap <localleader>ow :CoffeeWatch<CR>
 xnoremap <localleader>ow :CoffeeWatch<CR>
 nnoremap <localleader>ol :CoffeeLint<CR>
 xnoremap <localleader>ol :CoffeeLint<CR>
+
+" Shortcuts - NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
 " Shortcuts - Gulp
 " First save all
