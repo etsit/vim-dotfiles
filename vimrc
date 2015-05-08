@@ -30,10 +30,11 @@ nmap ga <Plug>(EasyAlign)
 " -----
 "  Plugin - vim-sparkup
 
-" Change mapping to avoid conflict with neosnippet.vim
-let g:sparkupExecuteMapping = '<c-s>'
-let g:sparkupNextMapping = '<c-d>'
 let g:sparkupDoubleQuote = 1
+
+" Change mapping to avoid conflict with neosnippet.vim
+"let g:sparkupExecuteMapping = '<c-s>'
+"let g:sparkupNextMapping = '<c-d>'
 
 
 " -----
@@ -123,31 +124,44 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" SEEMS LIKE SNIPPETS SETTINGS
+"" Plugin key-mappings.
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+"" SuperTab like snippets behavior.
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: "\<TAB>"
 
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
+"" For snippet_complete marker.
+"if has('conceal')
+"  set conceallevel=2 concealcursor=i
+"endif
 
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
+"" Enable snipMate compatibility feature.
+"let g:neosnippet#enable_snipmate_compatibility = 1
 
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+"" Tell Neosnippet about the other snippets
+"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
-"autocmd InsertLeave * NeoSnippetClearMarkers
+""autocmd InsertLeave * NeoSnippetClearMarkers
+
+
+" -----
+"  Plugin - ultisnips
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 
 " -----
@@ -181,7 +195,7 @@ let g:Tex_FoldedEnvironments=""
 let g:Tex_FoldedMisc=""
 
 " Map insertion of new item, since Alt-i doesn't work
-imap <c-o> <Plug>Tex_InsertItemOnThisLine
+imap <C-b> <Plug>Tex_InsertItemOnThisLine
 
 
 " -----
@@ -214,7 +228,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_open_multiple_files = '1ij'
 "let g:ctrlp_open_multiple_files = '10tjr'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPBuffer'
+"let g:ctrlp_cmd = 'CtrlP'
 "let g:ctrlp_cmd = 'CtrlPMRU'
 
 
@@ -434,6 +449,9 @@ set scrolloff=3
 " Remove right scroll bar
 set guioptions-=r
 
+" Read changes on disk without prompting
+set autoread
+
 " Mapping jk as Escape
 " Note, no comments shall be placed on the same line
 inoremap jk <Esc>
@@ -485,7 +503,8 @@ nnoremap <localleader>ol :CoffeeLint<CR>
 xnoremap <localleader>ol :CoffeeLint<CR>
 
 " Shortcuts - Gulp
-nnoremap <localleader>gb :!gulp build<CR>
+" First save all
+nnoremap <localleader>gb :wa \| !gulp build-app<CR>
 
 " Make shortcuts
 nnoremap <localleader>m :make<CR>
@@ -527,6 +546,8 @@ augroup MyIMAPs
     au  VimEnter * call IMAP('wwjs',    'JavaScript',                  '')
     au  VimEnter * call IMAP('wwsp',    'SPARQL',                      '')
     au  VimEnter * call IMAP('wwsrl',   'Spuirrel',                    '')
+    au  VimEnter * call IMAP('clog',    'console.log ',                '')
+    au  VimEnter * call IMAP('cerr',    'console.error ',              '')
 augroup END
 
 " Set filetype html for *.ejs (Embedded JavaScript templates)
