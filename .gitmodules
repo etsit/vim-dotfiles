@@ -97,3 +97,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule "bundle/vim-sparql"]
+	path = bundle/vim-sparql
+	url = https://github.com/Omer/vim-sparql
