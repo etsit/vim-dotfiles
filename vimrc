@@ -394,8 +394,9 @@ let coffee_lint_options = '-f ~/Dropbox/config/macosx/coffeelint/coffeelint.json
 " ----- 
 "  vim-session
 
-let g:session_autosave = "no"
+let g:session_autosave  = "no"
 let g:session_directory = "~/Dropbox/config/macosx/vim/sessions"
+"let g:session_autoload  = "no"
 
 
 " ----- 
@@ -470,13 +471,18 @@ inoremap jk <Esc>
 nnoremap Y y$
 
 " 'Stamping' - Mappings for replace
-nnoremap S "_diw""Pb
-"Taken by surround.vim
+nnoremap S ciw<C-r>0<Esc>b
+" Below taken from surround.vim
+" but it doesn't work correctly if word ends line
+"nnoremap S "_diw""Pb
 "xnoremap S "_d""Pb
 
 " Center cursor on screen while searching
 nmap n nzz
 nmap N Nzz
+
+" Expand three new lines for new paragraph
+nnoremap <C-o> O<CR>
 
 " Clear search highlight
 nnoremap <leader><leader> :noh<cr>
@@ -495,7 +501,7 @@ inoremap <localleader>) {<Esc>o});<Esc>O
 " Buffer shortcuts
 nnoremap <leader>f :bn<CR>
 nnoremap <leader>b :bp<CR>
-" Calling vim-bbye instead of built-in
+" Calling vim-bbye instead of built-in buffer delete
 nnoremap <leader>d :Bdelete<CR>
 
 " Show quickfix window
@@ -534,7 +540,11 @@ autocmd FileType css        setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html       setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json       setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType coffee     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType sparql     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 "autocmd BufNewFile,BufReadPost *.coffee   setl     shiftwidth=2
+
+" SPARQL
+autocmd FileType sparql setlocal autoindent
 
 " TeX
 autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
@@ -558,7 +568,6 @@ augroup MyIMAPs
     au  VimEnter * call IMAP('wwnode',  'Node.js',                     '')
     au  VimEnter * call IMAP('wwjs',    'JavaScript',                  '')
     au  VimEnter * call IMAP('wwsp',    'SPARQL',                      '')
-    au  VimEnter * call IMAP('wwsrl',   'Spuirrel',                    '')
     au  VimEnter * call IMAP('clog',    'console.log ',                '')
     au  VimEnter * call IMAP('cerr',    'console.error ',              '')
 augroup END
