@@ -1,6 +1,3 @@
-[submodule "bundle/Solarized"]
-	path = bundle/Solarized
-	url = https://github.com/vim-scripts/Solarized
 [submodule "bundle/javascript-libraries-syntax.vim"]
 	path = bundle/javascript-libraries-syntax.vim
 	url = https://github.com/othree/javascript-libraries-syntax.vim
@@ -100,3 +97,6 @@
 [submodule "bundle/vim-sparql"]
 	path = bundle/vim-sparql
 	url = https://github.com/Omer/vim-sparql
+[submodule "bundle/vim-colors_atelier-schemes"]
+	path = bundle/vim-colors_atelier-schemes
+	url = https://github.com/atelierbram/vim-colors_atelier-schemes

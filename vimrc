@@ -199,16 +199,6 @@ imap <C-b> <Plug>Tex_InsertItemOnThisLine
 
 
 " -----
-"  Plugin - Solarized
-
-" 'If you do use the custom terminal colors, simply add the following line before the colorschem solarized line'
-let g:solarized_termcolors=16
-set background=dark
-"set background=light
-colorscheme solarized
-
-
-" -----
 "  Plugin - gundo.vim
 nnoremap <F2> :GundoToggle<CR>
 
@@ -220,6 +210,27 @@ nnoremap <F2> :GundoToggle<CR>
 set laststatus=2
 " Top buffer bar
 let g:airline#extensions#tabline#enabled = 1
+
+
+" -----
+"  Plugin - vim-colors_atelier-schemes
+
+syntax enable
+
+set background=dark
+"set background=light
+
+colorscheme base16-ateliersulphurpool
+"colorscheme base16-atelierdune
+"colorscheme base16-atelierforest
+"colorscheme base16-atelierplateau
+"colorscheme base16-atelierheath
+"colorscheme base16-ateliercave
+"colorscheme base16-atelierlakeside
+"colorscheme base16-ateliersavanna
+"colorscheme base16-atelierseaside
+"colorscheme base16-atelierdune
+"colorscheme base16-atelierestuary
 
 
 " -----
@@ -410,6 +421,12 @@ let g:session_directory = "~/Dropbox/config/macosx/vim/sessions"
 
 
 " ----- 
+"  ag.vim
+
+let g:agprg = "ag --column --ignore={*.map,*concat*.js,*min*.js,*bower_components*,*node_modules*}"
+
+
+" ----- 
 "  Misc
 
 " '%' matching also begin/end, xml open/close tags etc
@@ -482,7 +499,7 @@ nmap n nzz
 nmap N Nzz
 
 " Expand three new lines for new paragraph
-nnoremap <C-o> O<CR>
+nnoremap <C-n> O<CR>
 
 " Clear search highlight
 nnoremap <leader><leader> :noh<cr>
@@ -519,7 +536,7 @@ nnoremap <localleader>ol :CoffeeLint<CR>
 xnoremap <localleader>ol :CoffeeLint<CR>
 
 " Shortcuts - NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 
 " Shortcuts - Gulp
 " First save all
