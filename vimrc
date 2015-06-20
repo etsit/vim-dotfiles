@@ -190,9 +190,9 @@ let g:Tex_ViewRule_pdf='preview'
 let g:Tex_MultipleCompileFormats='pdf,dvi'
 
 " disable folding
-let g:Tex_FoldedSections=""
-let g:Tex_FoldedEnvironments=""
-let g:Tex_FoldedMisc=""
+"let g:Tex_FoldedSections=""
+"let g:Tex_FoldedEnvironments=""
+"let g:Tex_FoldedMisc=""
 
 " Map insertion of new item, since Alt-i doesn't work
 imap <C-b> <Plug>Tex_InsertItemOnThisLine
@@ -332,7 +332,8 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set hlsearch
+  set nohls
+  "set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -391,7 +392,7 @@ endif
 "autocmd QuickFixCmdPost * nested cwindow | redraw!
 
 " Folding
-"autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 
 " Open temporary compilation output buffer in vertical mode
 let coffee_compile_vert = 1
@@ -480,6 +481,9 @@ set guioptions-=r
 " Read changes on disk without prompting
 set autoread
 
+" Folding
+set foldcolumn=5
+
 " Mapping jk as Escape
 " Note, no comments shall be placed on the same line
 inoremap jk <Esc>
@@ -488,7 +492,7 @@ inoremap jk <Esc>
 nnoremap Y y$
 
 " 'Stamping' - Mappings for replace
-nnoremap S ciw<C-r>0<Esc>b
+nnoremap S "_ciw<C-r>0<Esc>b
 " Below taken from surround.vim
 " but it doesn't work correctly if word ends line
 "nnoremap S "_diw""Pb
@@ -497,6 +501,8 @@ nnoremap S ciw<C-r>0<Esc>b
 " Center cursor on screen while searching
 nmap n nzz
 nmap N Nzz
+nmap * *zz
+nmap # #zz
 
 " Expand three new lines for new paragraph
 nnoremap <C-n> O<CR>
@@ -506,14 +512,18 @@ nnoremap <leader><leader> :noh<cr>
 " Edit vimrc
 nnoremap <leader>ev :e ~/.vim/vimrc<CR>
 
-" {} and [] blocks
+" Brackets
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
 inoremap <localleader>[ [<Esc>o]<Esc>O
 inoremap <localleader>] [<Esc>o];<Esc>O
 inoremap <localleader>{ {<Esc>o}<Esc>O
 inoremap <localleader>} {<Esc>o};<Esc>O
-inoremap <localleader>( ()<Esc>i
 " Note that } is also inserted 
 inoremap <localleader>) {<Esc>o});<Esc>O
+" Jump outside block: http://vim.wikia.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier
+inoremap <C-w> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
 " Buffer shortcuts
 nnoremap <leader>f :bn<CR>
@@ -540,7 +550,7 @@ map <F3> :NERDTreeToggle<CR>
 
 " Shortcuts - Gulp
 " First save all
-nnoremap <localleader>gb :wa \| !gulp build-app<CR>
+nnoremap <localleader>b :wa \| !gulp build-app<CR>
 
 " Make shortcuts
 nnoremap <localleader>m :make<CR>
@@ -560,10 +570,10 @@ autocmd FileType coffee     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expand
 autocmd FileType sparql     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 "autocmd BufNewFile,BufReadPost *.coffee   setl     shiftwidth=2
 
-" SPARQL
+" Indent
 autocmd FileType sparql setlocal autoindent
 
-" TeX
+" Format
 autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
 
 " NPM
