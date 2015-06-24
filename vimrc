@@ -197,6 +197,10 @@ let g:Tex_MultipleCompileFormats='pdf,dvi'
 " Map insertion of new item, since Alt-i doesn't work
 imap <C-b> <Plug>Tex_InsertItemOnThisLine
 
+" redef C-j to C-g
+imap <C-g> <Plug>IMAP_JumpForward
+nmap <C-g> <Plug>IMAP_JumpForward
+
 
 " -----
 "  Plugin - gundo.vim
@@ -391,9 +395,6 @@ endif
 " Show quickfix window if errors on compile
 "autocmd QuickFixCmdPost * nested cwindow | redraw!
 
-" Folding
-autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
-
 " Open temporary compilation output buffer in vertical mode
 let coffee_compile_vert = 1
 let coffee_watch_vert   = 1
@@ -516,18 +517,19 @@ nnoremap <leader>ev :e ~/.vim/vimrc<CR>
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
-inoremap <localleader>[ [<Esc>o]<Esc>O
-inoremap <localleader>] [<Esc>o];<Esc>O
-inoremap <localleader>{ {<Esc>o}<Esc>O
-inoremap <localleader>} {<Esc>o};<Esc>O
-" Note that } is also inserted 
-inoremap <localleader>) {<Esc>o});<Esc>O
-" Jump outside block: http://vim.wikia.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier
-inoremap <C-w> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+inoremap <localleader>[ [<CR>]<Esc>O
+inoremap <localleader>] [<CR>];<Esc>O
+inoremap <localleader>{ {<CR>}<Esc>O
+inoremap <localleader>} {<CR>};<Esc>O
+inoremap <localleader>) ();<Esc>hi
+" Jump outside block:
+" http://vim.wikia.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier
+inoremap <C-j> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
 " Buffer shortcuts
 nnoremap <leader>f :bn<CR>
-nnoremap <leader>b :bp<CR>
 " Calling vim-bbye instead of built-in buffer delete
 nnoremap <leader>d :Bdelete<CR>
 
@@ -558,28 +560,24 @@ nnoremap <localleader>m :make<CR>
 " Open Firefox
 nnoremap <localleader>nf :!open -a firefox %<CR>
 
-" Change tab settings for a specific file type 
-" Make - Avoid tab as spaces
-autocmd FileType make       setlocal noexpandtab
-autocmd FileType cucumber   setlocal noexpandtab
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css        setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html       setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType json       setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType coffee     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-autocmd FileType sparql     setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
-"autocmd BufNewFile,BufReadPost *.coffee   setl     shiftwidth=2
+" Auto Commands
 
-" Indent
-autocmd FileType sparql setlocal autoindent
-
-" Format
-autocmd FileType tex setlocal formatoptions=tcroqn textwidth=79
-
-" NPM
+autocmd FileType make                            setlocal noexpandtab
+autocmd FileType cucumber                        setlocal noexpandtab
+autocmd FileType javascript                      setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css                             setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType coffee                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType sparql                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
+autocmd FileType sparql                          setlocal autoindent
+autocmd FileType tex                             setlocal formatoptions=tcroqn textwidth=79
+autocmd FileType coffee                          setl     foldmethod=indent
+autocmd FileType javascript                      setl     foldmethod=syntax
 autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
 autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nb :!npm<space>run<space>build<cr>
 autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nl :!npm<space>run<space>build<space>&&<space>npm<space>start<cr>
+autocmd FileType javascript                      inoremap <buffer> <localleader>f function() {<CR>}<Esc>O
 
 " Abbreviations
 " Note: Latex-Suite is hijacking normal abbreviations using ab,
