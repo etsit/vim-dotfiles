@@ -6,7 +6,7 @@ Installing
 
 Clone Git repo in ~/.vim
 ```
-git clone git://github.com/etsit/vim-dotfiles.git ~/.vim
+git clone https://github.com/etsit/vim-dotfiles ~/.vim
 ```
 
 Create directory for temporary and backup files
