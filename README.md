@@ -57,14 +57,6 @@ or have 3rd-party prerequisities:
   - ghc/ghci
     - Haddock indexed doc (usually comes with ghc)
   - wget
-- OmniSharp: https://github.com/OmniSharp/omnisharp-vim
-  - See instructions at link above
-    - Note the need to enter plugin directory before running git submodule update -init --recursive
-    - Note: Prerequisite vim-dispatch
-  - Enter directory omnisharp-roslyn and run build.sh if needed
-    - Seems like older technology (called kre?) replaced by dnx
-  - Perhaps this wholde project isn't up to date: Starting server for a project with a project.json
-    instead of .sln file uses omnisharp-roslyn (requires "let g:OmniSharp_server_type = 'roslyn'" to be set).
 
 
 Update documentation after installation (with command from Pathogen)
