@@ -506,7 +506,7 @@ nmap * *zz
 nmap # #zz
 
 " Expand three new lines for new paragraph
-nnoremap <C-n> O<CR>
+nnoremap <C-m> O<CR>
 
 " Clear search highlight
 nnoremap <leader><leader> :noh<cr>
