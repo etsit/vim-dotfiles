@@ -551,6 +551,18 @@ runtime macros/matchit.vim
 let mapleader      = ","
 let maplocalleader = ","
 
+" General function: Map key to toggle opt
+" http://vim.wikia.com/wiki/Quick_generic_option_toggling
+function MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+  exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command -nargs=+ MapToggle call MapToggle(<f-args>)
+
+" Toggle paste
+MapToggle <leader>p paste
+
 "  Tab settings
 " Default tab settings
 set tabstop=4     "A tab is 4 spaces
