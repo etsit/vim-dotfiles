@@ -103,3 +103,12 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
+[submodule "bundle/vim-monokai"]
+	path = bundle/vim-monokai
+	url = https://github.com/sickill/vim-monokai
+[submodule "omnisharp-vim"]
+	path = omnisharp-vim
+	url = https://github.com/OmniSharp/omnisharp-vim.git
+[submodule "bundle/omnisharp-vim"]
+	path = bundle/omnisharp-vim
+	url = https://github.com/OmniSharp/omnisharp-vim.git
