@@ -530,9 +530,9 @@ nnoremap <leader><leader> :noh<cr>
 nnoremap <leader>ev :e ~/.vim/vimrc<CR>
 
 " Brackets
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
+"inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap <localleader>[ [<CR>]<Esc>O
 inoremap <localleader>] [<CR>];<Esc>O
