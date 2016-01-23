@@ -437,8 +437,8 @@ let g:agprg = "ag --column --ignore={*.map,*concat*.js,*min*.js,*bower_component
 runtime macros/matchit.vim
 
 " Remapping leader
-let mapleader      = ","
-let maplocalleader = ","
+"let mapleader      = ","
+"let maplocalleader = ","
 
 " General function: Map key to toggle opt
 " http://vim.wikia.com/wiki/Quick_generic_option_toggling
@@ -498,6 +498,9 @@ set guioptions-=r
 " Read changes on disk without prompting
 set autoread
 
+" Relative line numbers
+set relativenumber
+
 " Folding
 set foldcolumn=5
 
@@ -520,6 +523,63 @@ nmap n nzz
 nmap N Nzz
 nmap * *zz
 nmap # #zz
+
+nmap 'a 'azz
+nmap 'b 'bzz
+nmap 'c 'czz
+nmap 'd 'dzz
+nmap 'e 'ezz
+nmap 'f 'fzz
+nmap 'g 'gzz
+nmap 'h 'hzz
+nmap 'i 'izz
+nmap 'j 'jzz
+nmap 'k 'kzz
+nmap 'l 'lzz
+nmap 'm 'mzz
+nmap 'n 'nzz
+nmap 'o 'ozz
+nmap 'p 'pzz
+nmap 'q 'qzz
+nmap 'r 'rzz
+nmap 's 'szz
+nmap 't 'tzz
+nmap 'u 'uzz
+nmap 'v 'vzz
+nmap 'w 'wzz
+nmap 'x 'xzz
+nmap 'y 'yzz
+nmap 'z 'zzz
+
+nmap `a `azz
+nmap `b `bzz
+nmap `c `czz
+nmap `d `dzz
+nmap `e `ezz
+nmap `f `fzz
+nmap `g `gzz
+nmap `h `hzz
+nmap `i `izz
+nmap `j `jzz
+nmap `k `kzz
+nmap `l `lzz
+nmap `m `mzz
+nmap `n `nzz
+nmap `o `ozz
+nmap `p `pzz
+nmap `q `qzz
+nmap `r `rzz
+nmap `s `szz
+nmap `t `tzz
+nmap `u `uzz
+nmap `v `vzz
+nmap `w `wzz
+nmap `x `xzz
+nmap `y `yzz
+nmap `z `zzz
+
+nmap <C-o> <C-o>zz
+nmap <C-i> <C-i>zz
 
 " Expand three new lines for new paragraph
 nnoremap <C-m> ddO
