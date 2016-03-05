@@ -581,6 +581,10 @@ nmap `z `zzz
 nmap <C-o> <C-o>zz
 nmap <C-i> <C-i>zz
 
+nmap H Hzz
+nmap M Mzz
+nmap L Lzz
+
 " Expand three new lines for new paragraph
 nnoremap <C-m> ddO
 
