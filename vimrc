@@ -504,9 +504,9 @@ set relativenumber
 " Folding
 set foldcolumn=5
 
-" Mapping jk as Escape
+" Mapping kj as Escape
 " Note, no comments shall be placed on the same line
-inoremap jk <Esc>
+inoremap kj <Esc>
 
 " Make C, D and Y consistent
 nnoremap Y y$
