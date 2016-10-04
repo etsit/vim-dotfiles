@@ -33,6 +33,23 @@ git submodule update --init --recursive
 
 #### Plugins Installation 
 
+##### General git submodule installation
+
+Type in bash:
+```
+cd ~/.vim/bundle
+git submodule add <plugin-url>
+git submodule update --recursive --init
+```
+(add possible plugin specific options to your .vimrc)
+
+Start Vim and type:
+```
+:Helptags
+```
+to update documentation after installation (with command from Pathogen).
+
+##### Specific plugin notes
 The following plugins need special installation procedures
 or have 3rd-party prerequisities:
 - Syntastic: https://github.com/scrooloose/syntastic
@@ -57,10 +74,9 @@ or have 3rd-party prerequisities:
   - ghc/ghci
     - Haddock indexed doc (usually comes with ghc)
   - wget
+- vim-fsharp dependencies
+  - mono and fsharp
+  - syntastic
+  - omnicomplete for completion, e.g. supertab
 
-
-Update documentation after installation (with command from Pathogen)
-```
-:Helptags
-```
 

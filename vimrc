@@ -431,6 +431,13 @@ let g:agprg = "ag --column --ignore={*.map,*concat*.js,*min*.js,*bower_component
 
 
 " ----- 
+"  vim-fsharp
+
+" turn off if completion is too slow
+let g:fsharp_completion_helptext = 1
+
+
+" ----- 
 "  Misc
 
 " '%' matching also begin/end, xml open/close tags etc
@@ -654,6 +661,7 @@ autocmd FileType css                             setlocal shiftwidth=2 tabstop=2
 autocmd FileType html                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType coffee                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType fsharp                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd FileType sparql                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd FileType text                            setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd FileType tex                             setlocal formatoptions=tcroqn textwidth=79
