@@ -221,8 +221,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 syntax enable
 
-set background=dark
-"set background=light
+""set background=dark
+set background=light
 
 "colorscheme monokai
 
@@ -661,7 +661,7 @@ autocmd FileType css                             setlocal shiftwidth=2 tabstop=2
 autocmd FileType html                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType json                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType coffee                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-autocmd FileType fsharp                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType fsharp                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd FileType sparql                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd FileType text                            setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
 autocmd FileType tex                             setlocal formatoptions=tcroqn textwidth=79

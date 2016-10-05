@@ -79,4 +79,13 @@ or have 3rd-party prerequisities:
   - syntastic
   - omnicomplete for completion, e.g. supertab
 
+##### Removal of a plugin
 
+Since plugins are installed as git submodules, first
+```
+cd ~/.vim/bundle
+```
+and follow instructions on
+http://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule
+
+Don't forget to remove possible plugin configurations from your .vimrc.
