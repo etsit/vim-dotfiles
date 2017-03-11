@@ -503,13 +503,82 @@ set scrolloff=3
 set guioptions-=r
 
 " Read changes on disk without prompting
-set autoread
+"set autoread
 
 " Relative line numbers
 set relativenumber
 
 " Folding
 set foldcolumn=5
+
+" JavaScript
+autocmd FileType javascript inoremap clog console.log('');<Esc>hhi
+autocmd FileType javascript inoremap cerr console.err('');<Esc>hhi
+autocmd FileType javascript inoremap <buffer> <localleader>f function() {<CR>}<Esc>?(<CR>:nohl<CR>a
+" Set filetype html for *.ejs (Embedded JavaScript templates)
+"au BufNewFile,BufRead *.ejs set filetype=html
+
+" Make 
+nnoremap <localleader>m :make<CR>
+
+" CoffeeScript 
+autocmd FileType coffee nnoremap <localleader>or :CoffeeRun<CR>
+autocmd FileType coffee xnoremap <localleader>or :CoffeeRun<CR>
+autocmd FileType coffee nnoremap <localleader>ow :CoffeeWatch<CR>
+autocmd FileType coffee xnoremap <localleader>ow :CoffeeWatch<CR>
+autocmd FileType coffee nnoremap <localleader>ol :CoffeeLint<CR>
+autocmd FileType coffee xnoremap <localleader>ol :CoffeeLint<CR>
+
+" Shortcuts - NERDTree
+map <F3> :NERDTreeToggle<CR>
+
+" Shortcuts - Gulp
+" First save all
+nnoremap <localleader>b :wa \| !gulp build-app<CR>
+
+" Make shortcuts
+nnoremap <localleader>m :make<CR>
+
+" Open Firefox
+nnoremap <localleader>nf :!open -a firefox %<CR>
+
+" Auto Commands
+autocmd FileType make                            setlocal noexpandtab
+autocmd FileType cucumber                        setlocal noexpandtab
+autocmd FileType javascript                      setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css                             setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType coffee                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType fsharp                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
+autocmd FileType sparql                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
+autocmd FileType text                            setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
+autocmd FileType tex                             setlocal formatoptions=tcroqn textwidth=79
+autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
+autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nb :!npm<space>run<space>build<cr>
+autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nl :!npm<space>run<space>build<space>&&<space>npm<space>start<cr>
+"autocmd FileType coffee                          setl     foldmethod=indent
+"autocmd FileType javascript                      setl     foldmethod=syntax
+
+" Abbreviations
+" Note: Latex-Suite is hijacking normal abbreviations using ab,
+" therefore mappings are done using suggestions at
+" http://vim-latex.sourceforge.net/documentation/latex-suite/ls-new-macros.html
+" (Not filetype specific below)
+"augroup MyIMAPs
+"   au!
+"   au  VimEnter * call IMAP('wwetal',  'et~al.\ ',                    '')
+"   au  VimEnter * call IMAP('wwcetal', 'Cooper~et~al.\ ',             '')
+"   au  VimEnter * call IMAP('wwgdd',   '\mbox{Goal-Directed}~Design', '')
+"   au  VimEnter * call IMAP('wwng',    'AngularJS',                   '')
+"   au  VimEnter * call IMAP('wwnode',  'Node.js',                     '')
+"   au  VimEnter * call IMAP('wwjs',    'JavaScript',                  '')
+"   au  VimEnter * call IMAP('wwsp',    'SPARQL',                      '')
+"   au  VimEnter * call IMAP('humle',    'dumle',                      '')
+"augroup END
+
+" -----
+" General key mappings
 
 " Mapping kj as Escape
 " Note, no comments shall be placed on the same line
@@ -604,89 +673,21 @@ nnoremap <leader>ev :e ~/.vim/vimrc<CR>
 "inoremap ( ()<Esc>i
 "inoremap [ []<Esc>i
 "inoremap { {}<Esc>i
-inoremap " ""<Esc>i
-inoremap <localleader>[ [<CR>]<Esc>O
-inoremap <localleader>] [<CR>];<Esc>O
-inoremap <localleader>{ {<CR>}<Esc>O
-inoremap <localleader>} {<CR>};<Esc>O
-inoremap <localleader>) ();<Esc>hi
+"inoremap " ""<Esc>i
+"inoremap <localleader>[ [<CR>]<Esc>O
+"inoremap <localleader>] [<CR>];<Esc>O
+"inoremap <localleader>{ {<CR>}<Esc>O
+"inoremap <localleader>} {<CR>};<Esc>O
+"inoremap <localleader>) ();<Esc>hi
 " Jump outside block:
 " http://vim.wikia.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier
-inoremap <C-j> <Esc>/[)}"'\]> ,]<CR>:nohl<CR>a
+"inoremap <C-j> <Esc>/[)}"'\]> ,]<CR>:nohl<CR>a
 
 " Buffer shortcuts
-nnoremap <leader>f :bn<CR>
+"nnoremap <leader>f :bn<CR>
 " Calling vim-bbye instead of built-in buffer delete
-nnoremap <leader>d :Bdelete<CR>
-
-" JavaScript
-
-autocmd FileType javascript inoremap clog console.log('');<Esc>hhi
-autocmd FileType javascript inoremap cerr console.err('');<Esc>hhi
-autocmd FileType javascript inoremap <buffer> <localleader>f function() {<CR>}<Esc>?(<CR>:nohl<CR>a
+"nnoremap <leader>d :Bdelete<CR>
 
 " Show quickfix window
-nnoremap <leader>qf :cwindow<CR>
+"nnoremap <leader>qf :cwindow<CR>
 
-" Make 
-nnoremap <localleader>m :make<CR>
-
-" CoffeeScript 
-autocmd FileType coffee nnoremap <localleader>or :CoffeeRun<CR>
-autocmd FileType coffee xnoremap <localleader>or :CoffeeRun<CR>
-autocmd FileType coffee nnoremap <localleader>ow :CoffeeWatch<CR>
-autocmd FileType coffee xnoremap <localleader>ow :CoffeeWatch<CR>
-autocmd FileType coffee nnoremap <localleader>ol :CoffeeLint<CR>
-autocmd FileType coffee xnoremap <localleader>ol :CoffeeLint<CR>
-
-" Shortcuts - NERDTree
-map <F3> :NERDTreeToggle<CR>
-
-" Shortcuts - Gulp
-" First save all
-nnoremap <localleader>b :wa \| !gulp build-app<CR>
-
-" Make shortcuts
-nnoremap <localleader>m :make<CR>
-
-" Open Firefox
-nnoremap <localleader>nf :!open -a firefox %<CR>
-
-" Auto Commands
-
-autocmd FileType make                            setlocal noexpandtab
-autocmd FileType cucumber                        setlocal noexpandtab
-autocmd FileType javascript                      setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css                             setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType json                            setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType coffee                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-autocmd FileType fsharp                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
-autocmd FileType sparql                          setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
-autocmd FileType text                            setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab autoindent
-autocmd FileType tex                             setlocal formatoptions=tcroqn textwidth=79
-autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>ns :!npm<space>start<cr>
-autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nb :!npm<space>run<space>build<cr>
-autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>nl :!npm<space>run<space>build<space>&&<space>npm<space>start<cr>
-"autocmd FileType coffee                          setl     foldmethod=indent
-"autocmd FileType javascript                      setl     foldmethod=syntax
-
-" Abbreviations
-" Note: Latex-Suite is hijacking normal abbreviations using ab,
-" therefore mappings are done using suggestions at
-" http://vim-latex.sourceforge.net/documentation/latex-suite/ls-new-macros.html
-" (Not filetype specific below)
-augroup MyIMAPs
-    au!
-    au  VimEnter * call IMAP('wwetal',  'et~al.\ ',                    '')
-    au  VimEnter * call IMAP('wwcetal', 'Cooper~et~al.\ ',             '')
-    au  VimEnter * call IMAP('wwgdd',   '\mbox{Goal-Directed}~Design', '')
-    au  VimEnter * call IMAP('wwng',    'AngularJS',                   '')
-    au  VimEnter * call IMAP('wwnode',  'Node.js',                     '')
-    au  VimEnter * call IMAP('wwjs',    'JavaScript',                  '')
-    au  VimEnter * call IMAP('wwsp',    'SPARQL',                      '')
-    au  VimEnter * call IMAP('humle',    'dumle',                      '')
-augroup END
-
-" Set filetype html for *.ejs (Embedded JavaScript templates)
-au BufNewFile,BufRead *.ejs set filetype=html
