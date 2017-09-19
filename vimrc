@@ -221,12 +221,12 @@ let g:airline#extensions#tabline#enabled = 1
 
 syntax enable
 
-""set background=dark
-set background=light
-
-"colorscheme monokai
+set background=dark
+"set background=light
 
 colorscheme base16-ateliersulphurpool
+"colorscheme monokai
+"colorscheme Atelier_Sulphurpool
 "colorscheme base16-atelierdune
 "colorscheme base16-atelierforest
 "colorscheme base16-atelierplateau
@@ -423,6 +423,9 @@ let g:session_directory = "~/Dropbox/config/macosx/vim/sessions"
 " Close NERDTree if it's the only thing open
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Shortcuts - NERDTree
+map <F3> :NERDTreeToggle<CR>
+
 
 " ----- 
 "  ag.vim
@@ -529,9 +532,6 @@ autocmd FileType coffee xnoremap <localleader>ow :CoffeeWatch<CR>
 autocmd FileType coffee nnoremap <localleader>ol :CoffeeLint<CR>
 autocmd FileType coffee xnoremap <localleader>ol :CoffeeLint<CR>
 
-" Shortcuts - NERDTree
-map <F3> :NERDTreeToggle<CR>
-
 " Shortcuts - Gulp
 " First save all
 nnoremap <localleader>b :wa \| !gulp build-app<CR>
@@ -582,7 +582,7 @@ autocmd FileType javascript,coffee,html,css,json nnoremap <buffer> <localleader>
 
 " Mapping kj as Escape
 " Note, no comments shall be placed on the same line
-inoremap kj <Esc>
+"inoremap kj <Esc>
 
 " Make C, D and Y consistent
 nnoremap Y y$

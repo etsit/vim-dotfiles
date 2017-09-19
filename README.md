@@ -1,10 +1,15 @@
 vim-dotfiles
 ============
 
-Installing
-----------
+Installation
+------------
 
 Clone Git repo in ~/.vim
+```
+git clone https://github.com/etsit/vim-dotfiles
+ln -sv ~/vim-dotfiles ~/.vim
+```
+or, directly naming cloned directory ".vim":
 ```
 git clone https://github.com/etsit/vim-dotfiles ~/.vim
 ```
@@ -16,12 +21,12 @@ mkdir ~/.vim-tmp
 
 Create symlinks
 ```
-ln -s ~/.vim/vimrc ~/.vimrc
+ln -sv ~/.vim/vimrc ~/.vimrc
 ```
 
 and if ~/.vim/gvimrc exists,
 ```
-ln -s ~/.vim/gvimrc ~/.gvimrc
+ln -sv ~/.vim/gvimrc ~/.gvimrc
 ```
 
 Update any existing plugins
