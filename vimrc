@@ -224,7 +224,7 @@ syntax enable
 set background=dark
 "set background=light
 
-colorscheme base16-ateliersulphurpool
+"colorscheme base16-ateliersulphurpool
 "colorscheme monokai
 "colorscheme Atelier_Sulphurpool
 "colorscheme base16-atelierdune
@@ -233,7 +233,7 @@ colorscheme base16-ateliersulphurpool
 "colorscheme base16-atelierheath
 "colorscheme base16-ateliercave
 "colorscheme base16-atelierlakeside
-"colorscheme base16-ateliersavanna
+colorscheme base16-ateliersavanna
 "colorscheme base16-atelierseaside
 "colorscheme base16-atelierdune
 "colorscheme base16-atelierestuary
@@ -258,6 +258,7 @@ let g:tern_map_keys=1
 
 " ----- 
 "  Plugin - vim-hdevtools
+
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
 let g:syntastic_haskell_hdevtools_args = '-g -Wall'
@@ -265,11 +266,24 @@ let g:syntastic_haskell_hdevtools_args = '-g -Wall'
 
 " -----
 "  Plugin - haskellmode-vim
+
 au BufEnter *.hs compiler ghc
 " Decide which version of ghc to use
 ":let g:ghc="/usr/bin/ghc-6.6.1"
 " Default browser for docs
 let g:haddock_browser="/Applications/Firefox.app/Contents/MacOS/firefox"
+
+
+" -----
+"  Plugin - elm-vim
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:elm_syntastic_show_warnings = 1
+call neocomplete#util#set_default_dictionary(
+  \ 'g:neocomplete#sources#omni#input_patterns',
+  \ 'elm',
+  \ '\.')
 
 
 " -----
