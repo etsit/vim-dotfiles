@@ -297,6 +297,70 @@ com! FormatJSON call FormatJSON()
 
 
 " -----
+"  vim-coffee-script
+
+" Compile on write
+" - silent: Don't show compiler output in bottom window
+" - !:      Don't jump to line of error
+"autocmd BufWritePost *.coffee silent make!
+"autocmd BufWritePost *.coffee :CoffeeLint! | cwindow
+
+" Show quickfix window if errors on compile
+"autocmd QuickFixCmdPost * nested cwindow | redraw!
+
+" Open temporary compilation output buffer in vertical mode
+let coffee_compile_vert = 1
+let coffee_watch_vert   = 1
+let coffee_run_vert     = 1
+
+" CoffeeLint
+let coffee_lint_options = '-f ~/Dropbox/archive-my-stuff/software_resources/config/macosx/coffeelint/coffeelint.json'
+
+autocmd FileType coffee nnoremap <localleader>or :CoffeeRun<CR>
+autocmd FileType coffee xnoremap <localleader>or :CoffeeRun<CR>
+autocmd FileType coffee nnoremap <localleader>ow :CoffeeWatch<CR>
+autocmd FileType coffee xnoremap <localleader>ow :CoffeeWatch<CR>
+autocmd FileType coffee nnoremap <localleader>ol :CoffeeLint<CR>
+autocmd FileType coffee xnoremap <localleader>ol :CoffeeLint<CR>
+
+
+" ----- 
+"  vim-session
+
+let g:session_autosave  = "no"
+let g:session_directory = "~/Dropbox/archive-my-stuff/software_resources/config/macosx/vim/sessions"
+"let g:session_autoload  = "no"
+
+
+" ----- 
+"  NERDTree
+
+" Open NERDTree on vim startup (Interferes with sessions)
+"autocmd VimEnter * NERDTree
+
+" Close NERDTree if it's the only thing open
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Shortcuts - NERDTree
+map <F3> :NERDTreeToggle<CR>
+
+
+" ----- 
+"  ag.vim
+
+let g:agprg = "ag --column --ignore={*.map,*concat*.js,*min*.js,*bower_components*,*node_modules*}"
+
+
+" ----- 
+"  vim-fsharp
+
+" turn off if completion is too slow
+let g:fsharp_completion_helptext = 1
+
+
+" ----- 
+"  Misc
+
 "  Sample vimrc
 "
 " An example for a vimrc file.
@@ -399,64 +463,6 @@ if !exists(":DiffOrig")
 endif
 
 
-" -----
-"  vim-coffee-script
-
-" Compile on write
-" - silent: Don't show compiler output in bottom window
-" - !:      Don't jump to line of error
-"autocmd BufWritePost *.coffee silent make!
-"autocmd BufWritePost *.coffee :CoffeeLint! | cwindow
-
-" Show quickfix window if errors on compile
-"autocmd QuickFixCmdPost * nested cwindow | redraw!
-
-" Open temporary compilation output buffer in vertical mode
-let coffee_compile_vert = 1
-let coffee_watch_vert   = 1
-let coffee_run_vert     = 1
-
-" CoffeeLint
-let coffee_lint_options = '-f ~/Dropbox/config/macosx/coffeelint/coffeelint.json'
-
-
-" ----- 
-"  vim-session
-
-let g:session_autosave  = "no"
-let g:session_directory = "~/Dropbox/config/macosx/vim/sessions"
-"let g:session_autoload  = "no"
-
-
-" ----- 
-"  NERDTree
-
-" Open NERDTree on vim startup (Interferes with sessions)
-"autocmd VimEnter * NERDTree
-
-" Close NERDTree if it's the only thing open
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Shortcuts - NERDTree
-map <F3> :NERDTreeToggle<CR>
-
-
-" ----- 
-"  ag.vim
-
-let g:agprg = "ag --column --ignore={*.map,*concat*.js,*min*.js,*bower_components*,*node_modules*}"
-
-
-" ----- 
-"  vim-fsharp
-
-" turn off if completion is too slow
-let g:fsharp_completion_helptext = 1
-
-
-" ----- 
-"  Misc
-
 " '%' matching also begin/end, xml open/close tags etc
 runtime macros/matchit.vim
 
@@ -537,24 +543,6 @@ autocmd FileType javascript inoremap <buffer> <localleader>f function() {<CR>}<E
 
 " Make 
 nnoremap <localleader>m :make<CR>
-
-" CoffeeScript 
-autocmd FileType coffee nnoremap <localleader>or :CoffeeRun<CR>
-autocmd FileType coffee xnoremap <localleader>or :CoffeeRun<CR>
-autocmd FileType coffee nnoremap <localleader>ow :CoffeeWatch<CR>
-autocmd FileType coffee xnoremap <localleader>ow :CoffeeWatch<CR>
-autocmd FileType coffee nnoremap <localleader>ol :CoffeeLint<CR>
-autocmd FileType coffee xnoremap <localleader>ol :CoffeeLint<CR>
-
-" Shortcuts - Gulp
-" First save all
-nnoremap <localleader>b :wa \| !gulp build-app<CR>
-
-" Make shortcuts
-nnoremap <localleader>m :make<CR>
-
-" Open Firefox
-nnoremap <localleader>nf :!open -a firefox %<CR>
 
 " Auto Commands
 autocmd FileType make                            setlocal noexpandtab
@@ -680,8 +668,6 @@ nnoremap <C-m> ddO
 
 " Clear search highlight
 nnoremap <leader><leader> :noh<cr>
-" Edit vimrc
-nnoremap <leader>ev :e ~/.vim/vimrc<CR>
 
 " Brackets
 "inoremap ( ()<Esc>i
